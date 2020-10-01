@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         editTextTextPersonName = (EditText) findViewById(R.id.editTextTextPersonName);
-        if (savedInstanceState != null) {
+        if (savedInstanceState != null && name.isEmpty()) {
             name = savedInstanceState.getString("name");
             display((name));
         }
@@ -41,18 +41,17 @@ public class MainActivity extends AppCompatActivity {
             Context context = getApplicationContext();
             CharSequence text = "Input your name, please!";
             int duration = Toast.LENGTH_SHORT;
-
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         } else {
-            display(name);
+            display("Hello, " +name);
         }
     }
 
 
     public void display(String name) {
         TextView textView = (TextView) findViewById(R.id.textView);
-        textView.setText("Hello, "+name);
+        textView.setText(name);
     }
 
 }
